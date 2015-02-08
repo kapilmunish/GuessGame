@@ -21,29 +21,24 @@ public class GameTest {
     	
     }
     
-    public void testGuess(){
-    	int numToGuess = r.nextInt(1000);
-    	
-    	while(true){
-    		
-    	}
-    }
-    
-    public void testGuess(int numToGuess){
-    	int log2OfMax = 10;    	
-    	boolean found = false;
-		int guess = game.start();
-    	for(int i=0; i < log2OfMax; i++){
-    		
-    	}
-    	if(!found){
-    		fail("Shoudn't take more than "+  log2OfMax +" iterations");
-    	}
-    }
+//    
+//    public void testGuess(int numToGuess){
+//    	int log2OfMax = 10;    	
+//    	boolean found = false;
+//		int guess = game.start();
+//    	for(int i=0; i < log2OfMax; i++){
+//    		
+//    	}
+//    	if(!found){
+//    		fail("Shoudn't take more than "+  log2OfMax +" iterations");
+//    	}
+//    }
 
 	
-	
-	@Test
+	/**
+	 * Test to check if the guess is 142
+	 */
+	//@Test
 	public void testHigher(){
 		//game.start();
 		//assertEquals(game.start(), 50);
@@ -59,21 +54,22 @@ public class GameTest {
 		assertEquals(game.lower(), 142);
 	}
 
-	//@Test(expected=Exception.class)
+	/**
+	 * Test to check if guess was 111
+	 */
+	@Test
 	public void testLiar(){
-		assertEquals(game.start(), 50);
-		assertEquals(game.higher(), 75);
-		assertEquals(game.higher(), 87);
+		assertEquals(game.start(), 500);
+		assertEquals(game.lower(), 250);
+		assertEquals(game.lower(), 125);
+		assertEquals(game.lower(), 62);
 		assertEquals(game.higher(), 93);
-		assertEquals(game.higher(), 96);
-		assertEquals(game.higher(), 98);
-		assertEquals(game.higher(), 99);
+		assertEquals(game.higher(), 109);
+		assertEquals(game.higher(), 117);
+		assertEquals(game.lower(), 113);
+		assertEquals(game.lower(), 111);
 		game.higher();
 	}
 
-	//@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }

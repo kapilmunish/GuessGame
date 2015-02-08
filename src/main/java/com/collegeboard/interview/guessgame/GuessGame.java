@@ -1,24 +1,34 @@
 package com.collegeboard.interview.guessgame;
+
 import java.util.Random;
 import java.util.Scanner;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * Guess Game class Initialized lower, upper and median values to start with
+ * 
+ * @author kmunish
+ *
+ */
+public class GuessGame implements Game {
+	Random generator = new Random();
+	int guessLower = 0;
+	int guessUpper = 1000;
+	int myGuess = (guessLower + guessUpper) / 2;
 
-public class GuessGame implements Game{
-	 Random generator = new Random();
-	 int guessLower=0;
-	 int guessUpper=1000;
-	 //int myGuess=(generator.nextInt(10) + 1) * 10;
-	 int myGuess=(guessLower + guessUpper)/2;
-
+	/**
+	 * The main method to invoke the Guess Game program
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		GuessGame gg = new GuessGame();
 		gg.guessUserNumber();
 	}
 
 	/**
-	 * 
+	 * Guess Number method for handling various scenarios
 	 */
 	public void guessUserNumber() {
 		Scanner scan = new Scanner(System.in);
@@ -27,72 +37,83 @@ public class GuessGame implements Game{
 		String another = "y";
 		boolean flag = false;
 		boolean anotherFlag = true;
-
+		
+		System.out
+		.println("Welcome to the guess game, kindly provide input to start: ");
+		
 		guess = scan.next();
 
-		if(StringUtils.equalsIgnoreCase(guess, "ready")){
-			while(anotherFlag){
-				
-				System.out.println("Is the number # "+answer);
+		if (StringUtils.equalsIgnoreCase(guess, "ready")) {
+			while (anotherFlag) {
+
+				System.out.println("Is the number # " + answer);
 				flag = false;
-				while(!flag){
+				while (!flag) {
+
+					if(guessLower == guessUpper){
+						System.out.println("I guess the number is " + myGuess + "but you're trying to fool us :)");
+					}
 					
 					guess = scan.next();
-					if(StringUtils.equalsIgnoreCase(guess, "yes") || StringUtils.equalsIgnoreCase(guess, "end")){
+					if (StringUtils.equalsIgnoreCase(guess, "yes")
+							|| StringUtils.equalsIgnoreCase(guess, "end")) {
 						System.out.println("you guessed correctly!!");
 						flag = true;
-					}else if(StringUtils.equalsIgnoreCase(guess, "h")){
+					} else if (StringUtils.equalsIgnoreCase(guess, "h")) {
 						answer = higher();
-						System.out.println("Is the number "+answer);
+						System.out.println("Is the number h " + answer);
 						flag = false;
-					}else if(StringUtils.equalsIgnoreCase(guess, "l")){
+					} else if (StringUtils.equalsIgnoreCase(guess, "l")) {
 						answer = lower();
-						System.out.println("Is the number "+answer);
+						System.out.println("Is the number l " + answer);
 						flag = false;
-					}else{
-						System.out.println("Incorrect input "+ guess + " kindly enter l/h/yes/end");
+					} else {
+						System.out.println("Incorrect input " + guess
+								+ " kindly enter l/h/yes/end");
 					}
-				}//end inner while
-				
+				}// end inner while
+
 				System.out.println();
 				System.out.println("would you like to play again?(y/n)");
 				another = scan.next();
-				if(another.equalsIgnoreCase("y")){
+				if (another.equalsIgnoreCase("y")) {
 					answer = start();
 					anotherFlag = true;
-				}else{
+				} else {
 					anotherFlag = false;
 				}
-			}//end outer while			
+			}// end outer while
+		} else {
+			System.out.println("Invalid input");
 		}
 	}
 
 	/**
-	 * @return
+	 * @return starting over again once the number is guessed successfully
 	 */
 	public int start() {
-		guessLower=0;
-		guessUpper=1000;
-		//myGuess=(generator.nextInt(10) + 1) * 10;
-		myGuess=(guessLower + guessUpper)/2;
+		guessLower = 0;
+		guessUpper = 1000;
+		// myGuess=(generator.nextInt(10) + 1) * 10;
+		myGuess = (guessLower + guessUpper) / 2;
 		return myGuess;
 	}
 
 	/**
-	 * @return
+	 * @return lower number to guess
 	 */
 	public int lower() {
 		guessUpper = myGuess;
-		myGuess = (myGuess + guessLower)/2;
+		myGuess = (myGuess + guessLower) / 2;
 		return myGuess;
 	}
 
 	/**
-	 * @return
+	 * @return hugher number to guess
 	 */
 	public int higher() {
 		guessLower = myGuess;
-		myGuess = (myGuess + guessUpper)/2;
+		myGuess = (myGuess + guessUpper) / 2;
 		return myGuess;
 	}
 
@@ -119,5 +140,5 @@ public class GuessGame implements Game{
 	public void setMyGuess(int myGuess) {
 		this.myGuess = myGuess;
 	}
-	
+
 }
