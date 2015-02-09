@@ -59,17 +59,17 @@ public class GuessGame implements Game {
 							|| StringUtils.equalsIgnoreCase(guess, "end")) {
 						System.out.println("you guessed correctly!!");
 						flag = true;
-					} else if (StringUtils.equalsIgnoreCase(guess, "h")) {
+					} else if (StringUtils.equalsIgnoreCase(guess, "higher")) {
 						answer = higher();
-						System.out.println("Is the number h " + answer);
+						System.out.println("Is the number " + answer);
 						flag = false;
-					} else if (StringUtils.equalsIgnoreCase(guess, "l")) {
+					} else if (StringUtils.equalsIgnoreCase(guess, "lower")) {
 						answer = lower();
-						System.out.println("Is the number l " + answer);
+						System.out.println("Is the number " + answer);
 						flag = false;
 					} else {
 						System.out.println("Incorrect input " + guess
-								+ " kindly enter l/h/yes/end");
+								+ " kindly enter lower/higher/yes/end");
 					}
 				}// end inner while
 
