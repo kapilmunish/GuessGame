@@ -38,10 +38,8 @@ public class GameTest {
 	/**
 	 * Test to check if the guess is 142
 	 */
-	//@Test
+	@Test
 	public void testHigher(){
-		//game.start();
-		//assertEquals(game.start(), 50);
 		game.setMyGuess(10);
 		assertEquals(game.higher(), 505);
 		assertEquals(game.lower(), 257);
@@ -59,7 +57,7 @@ public class GameTest {
 	 */
 	@Test
 	public void testLiar(){
-		assertEquals(game.start(), 500);
+		assertEquals(game.startover(), 500);
 		assertEquals(game.lower(), 250);
 		assertEquals(game.lower(), 125);
 		assertEquals(game.lower(), 62);
@@ -68,7 +66,6 @@ public class GameTest {
 		assertEquals(game.higher(), 117);
 		assertEquals(game.lower(), 113);
 		assertEquals(game.lower(), 111);
-		game.higher();
 	}
 
 

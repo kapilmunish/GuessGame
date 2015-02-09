@@ -77,7 +77,7 @@ public class GuessGame implements Game {
 				System.out.println("would you like to play again?(y/n)");
 				another = scan.next();
 				if (another.equalsIgnoreCase("y")) {
-					answer = start();
+					answer = startover();
 					anotherFlag = true;
 				} else {
 					anotherFlag = false;
@@ -91,7 +91,7 @@ public class GuessGame implements Game {
 	/**
 	 * @return starting over again once the number is guessed successfully
 	 */
-	public int start() {
+	public int startover() {
 		guessLower = 0;
 		guessUpper = 1000;
 		// myGuess=(generator.nextInt(10) + 1) * 10;
