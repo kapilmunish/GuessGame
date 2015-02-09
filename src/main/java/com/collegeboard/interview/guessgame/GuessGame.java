@@ -84,7 +84,7 @@ public class GuessGame implements Game {
 				}
 			}// end outer while
 		} else {
-			System.out.println("Invalid input");
+			System.out.println("Invalid input, re-run program to start over again");
 		}
 	}
 
